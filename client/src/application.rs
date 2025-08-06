@@ -79,6 +79,7 @@ impl ApplicationHandler for AppState {
                     player.velocity.into(),
                     player.pitch,
                     player.yaw,
+                    player.body_yaw,
                 )
                 .is_err()
             {

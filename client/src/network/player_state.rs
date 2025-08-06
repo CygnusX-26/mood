@@ -10,6 +10,7 @@ pub struct PlayerState {
     pub velocity: [f32; 3],
     pub pitch: f32,
     pub yaw: f32,
+    pub body_yaw: f32,
     pub health: u8,
 }
 

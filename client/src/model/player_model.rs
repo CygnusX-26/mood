@@ -146,11 +146,16 @@ impl PlayerModel {
         let player_state = timed_player_state.player_state;
         let new_pos =
             Point3::from(player_state.position) + Vector3::from(player_state.velocity) * dt;
+        let yaw_rotation = Matrix4::from(Rotation3::from_axis_angle(
+            &Vector3::y_axis(),
+            player_state.body_yaw,
+        ));
 
-        let model_mat = Matrix4::new_translation(&new_pos.coords);
+        let model_mat = Matrix4::new_translation(&new_pos.coords) * yaw_rotation;
+        let normal_mat = yaw_rotation.fixed_resize::<3, 3>(0.0);
         RawInstance {
             model_mat: model_mat.into(),
-            normal_mat: Matrix3::identity().into(),
+            normal_mat: normal_mat.into(),
         }
     }
 }

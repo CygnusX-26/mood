@@ -111,10 +111,11 @@ impl Server {
                     velocity,
                     pitch,
                     yaw,
+                    body_yaw,
                 } => {
                     self.last_packet_sent.insert(src_addr, Instant::now());
                     if let Some(player) = self.player_states.get_mut(&src_addr) {
-                        player.update(position, velocity, pitch, yaw);
+                        player.update(position, velocity, pitch, yaw, body_yaw);
                     }
                 }
                 _ => {}

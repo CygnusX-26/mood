@@ -23,6 +23,7 @@ pub enum CommandType {
         velocity: [f32; 3],
         pitch: f32,
         yaw: f32,
+        body_yaw: f32,
     },
     Data((Uuid, Rc<[PlayerState]>)),
 }

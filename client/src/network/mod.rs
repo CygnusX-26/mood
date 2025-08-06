@@ -78,6 +78,7 @@ impl Network {
         velocity: [f32; 3],
         pitch: f32,
         yaw: f32,
+        body_yaw: f32,
     ) -> io::Result<()> {
         let movement_command = Command {
             command_type: command::CommandType::PlayerMove {
@@ -85,6 +86,7 @@ impl Network {
                 velocity,
                 pitch,
                 yaw,
+                body_yaw,
             },
             time: SystemTime::now()
                 .duration_since(UNIX_EPOCH)
